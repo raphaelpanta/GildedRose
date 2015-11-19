@@ -2,7 +2,7 @@ Versão em Português
 
 ##Rosa Dourada Kata de Refatoração
 
-Olá e bem-vindo ao time Gilded Rose. Como você sabe, somos uma pequena pousada uma
+Olá e bem-vindo ao time Rosa Dourada. Como você sabe, somos uma pequena pousada uma
 explendida localização em uma proeminete cidade dirigido por um amigável administrador 
 de pousadas chamado Alisson. Nós, também, compramos e vendemos somente as mais excelentes 
 mercadorias. Infelizmente, nossas mercadorias estão em constante degradação em qualidade 
