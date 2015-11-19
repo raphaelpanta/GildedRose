@@ -27,22 +27,22 @@ Bem simples, certo? Bem, agora é que a coisa se torna ainda mais interessante:
 - "Sulfuras", sendo um item lendário, nunca pode ser vendido ou decrementado em Quality(Qualidade)
 - "Backstage passes"(Passes para os bastidores), como "Aged Brie"(Queijo Brie Envelhecido), aumenta em Quality(Qualidade) ao passo que seu SellIn(PrazoDeVenda) se aproxima; Quality(qualidade aumenta em 2 quando tem 10 ou menos dias de prazo e por 3 quando faltam 5 ou menos dias porém a Quality(Qualidade) cai para 0 após o dia do Show.
 
-Nós, recentemente contratamos um fornecedor de items de invocação. Isto requer uma atualização 
+Nós, recentemente contratamos um fornecedor de itens de invocação. Isto requer uma atualização 
 em nosso sistema:
 
-- "Conjured" items (items Invocáveis) degradam em Quality(Qualidade) duas vezes mais rápido que os itens normais
+- "Conjured" items (Itens Invocáveis) degradam em Quality(Qualidade) duas vezes mais rápido que os itens normais
 
 Sinta-se livre para fazer quaisquer mudanças para o método UpdateQuality(AtualizarQualidade) 
 e adicionar qualquer código novo desde de que tudo continue a trabalhar corretamente. Todavia, 
 não altere a classe Item ou suas propriedades pois ela pertence ao goblin lá no canto que entrará
 em modo instantâneo de raiva e descarregara de uma vez em você pois, ele não acredita em código de 
-proriedade compartilhada (você pode fazer o método UpdateQuality(AtualizarQualidade) e as propriedades 
+propriedade compartilhada (você pode fazer o método UpdateQuality(AtualizarQualidade) e as propriedades 
 de Item static caso queira, nós iremos te dar cobertura para você).
 
 Apenas para deixar claro, um item não pode ter sua Qualidade aumentada acima de 50, 
 porém "Sulfuras" é um item lendário e sua Quality(Qualidade) é 80 e nunca se altera.
 
-##Começando
+##Dando Início
 
 Clone este repositório. Execute build.bat no Powershell. Se você ver uma saída similar 
 ao seguinte screenshot, você estará pronto para dar início as suas refatorações.
