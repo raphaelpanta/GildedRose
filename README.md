@@ -1,6 +1,6 @@
 Versão em Português
 
-##Gilded Rose Kata de Refatoração
+##Rosa Dourada Kata de Refatoração
 
 Olá e bem-vindo ao time Gilded Rose. Como você sabe, somos uma pequena pousada uma
 explendida localização em uma proeminete cidade dirigido por um amigável administrador 
