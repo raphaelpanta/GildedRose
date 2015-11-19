@@ -1,5 +1,7 @@
 Versão em Português
 
+[Original - Em inglês](https://github.com/NotMyself/GildedRose)
+
 ##Rosa Dourada Kata de Refatoração
 
 Olá e bem-vindo ao time Gilded Rose. Como você sabe, somos uma 
