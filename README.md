@@ -1,4 +1,5 @@
 Versão em Português Brasileiro
+
 A Brazilian Portuguese translation of GildedRose Kata [Original - In english](https://github.com/NotMyself/GildedRose)
 
 ##Rosa Dourada Kata de Refatoração
