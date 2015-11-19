@@ -2,15 +2,17 @@ Versão em Português
 
 ##Rosa Dourada Kata de Refatoração
 
-Olá e bem-vindo ao time Rosa Dourada. Como você sabe, somos uma pequena pousada uma
-explendida localização em uma proeminete cidade dirigido por um amigável administrador 
-de pousadas chamado Alisson. Nós, também, compramos e vendemos somente as mais excelentes 
-mercadorias. Infelizmente, nossas mercadorias estão em constante degradação em qualidade 
-ao passo em que se aproximam de seus prazos de venda. Nós temos um sistema em produção 
-que atualiza nosso inventório para nós. Ele foi desenvolvido por um tipo sem-noção chamado 
-Leeroy, o qual seguiu adiante em novas aventuras. Sua tarefa é adicionar novos recursos em 
-nosso sistema para podermos dar início a venda de uma nova categoria de itens. Em primeiro 
-lugar, uma introdução a nosso sistema:
+Olá e bem-vindo ao time Gilded Rose. Como você sabe, somos uma 
+pequena pousada uma expendida localização em uma proeminente 
+cidade dirigida por um amigável administrador de pousadas chamado 
+Alisson. Nós, também, compramos e vendemos somente as mais excelentes
+mercadorias. Infelizmente, nossas mercadorias estão em constante 
+degradação em qualidade ao passo em que se aproximam de seus prazos 
+de venda. Nós temos um sistema em produção que atualiza nosso inventário
+para nós. Ele foi desenvolvido por um tipo sem-noção chamado Leeroy, o 
+qual seguiu adiante em novas aventuras. Sua tarefa é adicionar novos 
+recursos em nosso sistema para podermos dar início à venda de uma nova 
+categoria de itens. Em primeiro lugar, uma introdução a nosso sistema:
 
 - Todos os itens tem um valor SellIn(PrazoDeVenda) o qual denota o número de dias que nós temos para vender aquele item
 - Todos os itens tem um valor de Quality(Qualidade) o qual denota o quanto valioso o item é
