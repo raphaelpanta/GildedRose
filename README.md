@@ -1,58 +1,56 @@
-##Gilded Rose Refactoring Kata
+Versão em Português
 
-Hi and welcome to team Gilded Rose. As you know, we are a small inn with a 
-prime location in a prominent city ran by a friendly innkeeper named 
-Allison. We also buy and sell only the finest goods. Unfortunately, our 
-goods are constantly degrading in quality as they approach their sell by 
-date. We have a system in place that updates our inventory for us. It was 
-developed by a no-nonsense type named Leeroy, who has moved on to new 
-adventures. Your task is to add the new feature to our system so that we 
-can begin selling a new category of items. First an introduction to our 
-system:
+##Gilded Rose Kata de Refatoração
 
-- All items have a SellIn value which denotes the number of days we have 
-to sell the item
-- All items have a Quality value which denotes how valuable the item is
-- At the end of each day our system lowers both values for every item
+Olá e bem-vindo ao time Gilded Rose. Como você sabe, somos uma pequena pousada uma
+explendida localização em uma proeminete cidade dirigido por um amigável administrador 
+de pousadas chamado Alisson. Nós, também, compramos e vendemos somente as mais excelentes 
+mercadorias. Infelizmente, nossas mercadorias estão em constante degradação em qualidade 
+ao passo em que se aproximam de seus prazos de venda. Nós temos um sistema em produção 
+que atualiza nosso inventório para nós. Ele foi desenvolvido por um tipo sem-noção chamado 
+Leeroy, o qual seguiu adiante em novas aventuras. Sua tarefa é adicionar novos recursos em 
+nosso sistema para podermos dar início a venda de uma nova categoria de itens. Em primeiro 
+lugar, uma introdução a nosso sistema:
 
-Pretty simple, right? Well this is where it gets interesting:
+- Todos os itens tem um valor SellIn(PrazoDeVenda) o qual denota o número de dias que nós temos para vender aquele item
+- Todos os itens tem um valor de Quality(Qualidade) o qual denota o quanto valioso o item é
+- Ao final de cada dia o sistema decrementa ambos os valores para cada item
 
-- Once the sell by date has passed, Quality degrades twice as fast
-- The Quality of an item is never negative
-- "Aged Brie" actually increases in Quality the older it gets
-- The Quality of an item is never more than 50
-- "Sulfuras", being a legendary item, never has to be sold or decreases 
-in Quality
-- "Backstage passes", like aged brie, increases in Quality as it's SellIn 
-value approaches; Quality increases by 2 when there are 10 days or less 
-and by 3 when there are 5 days or less but Quality drops to 0 after the 
-concert
+Bem simples, certo? Bem, agora é que a coisa se torna ainda mais interessante:
 
-We have recently signed a supplier of conjured items. This requires an 
-update to our system:
+- Após o prazo de venda passar, sua Quality(Qualidade) será degradado duas vezes mais rápido 
+- A Quality(Qualidade) de um item nunca deve ser negativa.
+- "Aged Brie"(Queijo Brie Envelhecido) na verdade tem acréscimo de Quality(Qualidade) quanto mais envelhecido ficar
+- A Quality(Qualidade) de um item não pode ser mais que 50
+- "Sulfuras", sendo um item lendário, nunca pode ser vendido ou decrementado em Quality(Qualidade)
+- "Backstage passes"(Passes para os bastidores), como "Aged Brie"(Queijo Brie Envelhecido), aumenta em Quality(Qualidade) ao passo que seu SellIn(PrazoDeVenda) se aproxima; Quality(qualidade aumenta em 2 quando tem 10 ou menos dias de prazo e por 3 quando faltam 5 ou menos dias porém a Quality(Qualidade) cai para 0 após o dia do Show.
 
-- "Conjured" items degrade in Quality twice as fast as normal items
+Nós, recentemente contratamos um fornecedor de items de invocação. Isto requer uma
+atualização em nosso sistema:
 
-Feel free to make any changes to the UpdateQuality method and add any 
-new code as long as everything still works correctly. However, do not 
-alter the Item class or Items property as those belong to the goblin 
-in the corner who will insta-rage and one-shot you as he doesn't 
-believe in shared code ownership (you can make the UpdateQuality 
-method and Items property static if you like, we'll cover for you).
+- "Conjured" items (items Invocáveis) degradam em Quality(Qualidade) duas vezes mais rápido que os itens normais
 
-Just for clarification, an item can never have its Quality increase 
-above 50, however "Sulfuras" is a legendary item and as such its 
-Quality is 80 and it never alters.
+Sinta-se livre para fazer quaisquer mudanças para o método UpdateQuality(AtualizarQualidade) 
+e adicionar qualquer código novo desde de que tudo continue a trabalhar corretamente. Todavia, 
+não altere a classe Item ou suas propriedades pois ela pertence ao goblin lá no canto que entrará
+em modo instantâneo de raiva e descarregara de uma vez em você pois, ele não acredita em código de 
+proriedade compartilhada (você pode fazer o método UpdateQuality(AtualizarQualidade) e as propriedades 
+de Item static caso queira, nós iremos te dar cobertura para você).
 
-##Getting Started
+Apenas para deixar clarom um item não pode ter sua Qualidade aumentada
+acima de 50, porém "Sulfuras" é um item lendário e sua Quality(Qualidade) é 80 e nunca se altera.
 
-Clone the repository. Run build.bat from Powershell. If you see 
-output similar to the following screenshot, you are ready to 
-start refactoring.
+##Começando
 
-![alt text](images/build_output.png "Good Build Output")
+Clone este repositório. Execute build.bat no Powershell. Se voçê ver
+uma saída similar ao seguinte screenshot, você estará pronto para 
+dar início as suas refatorações.
 
-##Who, What, Why?
-Who: [@TerryHughes](https://twitter.com/TerryHughes), [@NotMyself](https://twitter.com/NotMyself)
+![alt text](images/build_output.png "Saída com a Build em bom estado")
 
-What & Why: [Refactor This: The Gilded Rose Kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/)
+##Quem, O que e O Porquê?
+Quem: [@TerryHughes](https://twitter.com/TerryHughes), [@NotMyself](https://twitter.com/NotMyself)
+
+O que e o Porquê : [Refatore isto: O Kata Gilded Rose](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/)
+
+Tradução: Raphael Pantaleão - www.github.com/raphaelpanta
