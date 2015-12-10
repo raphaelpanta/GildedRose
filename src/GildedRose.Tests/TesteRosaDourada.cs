@@ -30,5 +30,24 @@ namespace RosaDourada.Testes
             Assert.Equal(sulfurarDepois.Qualidade, sulfurarAntes.Qualidade);
             Assert.Equal(sulfurarDepois.Qualidade, 80);
         }
+
+        [Fact]
+        public void NenhumItemPodeTemQualidadeAbaixoDeZero()
+        {
+            Programa.Main(new[] { "" });
+
+            var app = Programa.App;
+
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+
+            Assert.True(app.Itens.All(x => x.Qualidade >= 0));
+        }
     }
 }
