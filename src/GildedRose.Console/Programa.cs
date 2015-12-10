@@ -2,10 +2,12 @@
 
 namespace RosaDourada.Console
 {
-    class Programa
+    public class Programa
     {
-        IList<Item> Itens;
-        static void Main(string[] args)
+        public IList<Item> Itens { get; private set; }
+        public static Programa App { get; private set;}
+
+        public static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
 
@@ -28,9 +30,11 @@ namespace RosaDourada.Console
 
                           };
 
+            App = app;
+
             app.AtualizarQualidade();
 
-            System.Console.ReadKey();
+           // System.Console.ReadKey();
 
         }
 
