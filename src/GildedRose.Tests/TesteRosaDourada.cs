@@ -49,5 +49,19 @@ namespace RosaDourada.Testes
 
             Assert.True(app.Itens.All(x => x.Qualidade >= 0));
         }
+
+        [Fact]
+        public void QueijoBrieEnvelhecidoDeveAumentarAQualidadeAposPrazoDeVenda()
+        {
+            Programa.Main(new[] { "" });
+
+            var app = Programa.App;
+
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+
+            app.Itens.ToList().ForEach(x => System.Console.WriteLine(x));
+            Assert.True(app.Itens.Any(x => x.Nome == "Queijo Brie Envelhecido" && x.Qualidade == 4));
+        }
     }
 }
