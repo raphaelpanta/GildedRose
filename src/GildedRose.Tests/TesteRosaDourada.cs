@@ -51,6 +51,29 @@ namespace RosaDourada.Testes
         }
 
         [Fact]
+        public void AposOPrazoDeVendaAQualidadeDeveDegradarDuasVezes()
+        {
+            Programa.Main(new[] { "" });
+
+            var app = Programa.App;
+
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+            app.AtualizarQualidade();
+
+            var item = app.Itens.First(x => x.Nome == "+5 Vestimenta da Destreza");
+
+            Assert.Equal(8, item.Qualidade);
+        }
+
+        [Fact]
         public void QueijoBrieEnvelhecidoDeveAumentarAQualidadeAposPrazoDeVenda()
         {
             Programa.Main(new[] { "" });
@@ -60,7 +83,6 @@ namespace RosaDourada.Testes
             app.AtualizarQualidade();
             app.AtualizarQualidade();
 
-            app.Itens.ToList().ForEach(x => System.Console.WriteLine(x));
             Assert.True(app.Itens.Any(x => x.Nome == "Queijo Brie Envelhecido" && x.Qualidade == 4));
         }
     }

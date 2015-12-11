@@ -11,7 +11,7 @@ namespace RosaDourada.Console
         {
             System.Console.WriteLine("OMGHAI!");
 
-            var app = new Programa()
+            var app = new Programa
                           {
                               Itens = new List<Item>
                                           {
