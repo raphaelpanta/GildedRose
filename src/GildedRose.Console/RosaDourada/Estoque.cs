@@ -9,29 +9,29 @@ namespace GildedRose.Console.RosaDourada
 
     public class Estoque
     {
-        public IList<Item> Itens { get; private set; }
+        public IList<IItemEstocavel> Itens { get; private set; }
 
 
-        public Estoque(IList<Item> itens)
+        public Estoque(IList<IItemEstocavel> itens)
         {
             Itens = itens;
         }
 
         public Estoque()
         {
-            Itens = new List<Item>
+            Itens = new List<IItemEstocavel>
                                           {
-                                              new Item {Nome = "+5 Vestimenta da Destreza", PrazoDeVenda = 10, Qualidade = 20},
-                                              new Item {Nome = "Queijo Brie Envelhecido", PrazoDeVenda = 2, Qualidade = 0},
-                                              new Item {Nome = "Elixir do Mangusto", PrazoDeVenda = 5, Qualidade = 7},
-                                              new Item {Nome = "Sulfuras, Mão de Ragnaros", PrazoDeVenda = 0, Qualidade = 80},
-                                              new Item
+                                          new ItemDegradavel (new Item {Nome = "+5 Vestimenta da Destreza", PrazoDeVenda = 10, Qualidade = 20}),
+                                           new DummyItemEstocavel (new Item {Nome = "Queijo Brie Envelhecido", PrazoDeVenda = 2, Qualidade = 0}),
+                                           new ItemDegradavel (new Item {Nome = "Elixir do Mangusto", PrazoDeVenda = 5, Qualidade = 7}),
+                                           new DummyItemEstocavel (  new Item {Nome = "Sulfuras, Mão de Ragnaros", PrazoDeVenda = 0, Qualidade = 80}),
+                                            new DummyItemEstocavel  (new Item
                                                   {
                                                       Nome = "Passes para os bastidores do show TAFKAL80ETC ",
                                                       PrazoDeVenda = 15,
                                                       Qualidade = 20
-                                                  },
-                                              new Item {Nome = "Torta de Mana para Invocações", PrazoDeVenda = 3, Qualidade = 6}
+                                                  }),
+                                           new DummyItemEstocavel   (new Item {Nome = "Torta de Mana para Invocações", PrazoDeVenda = 3, Qualidade = 6})
                                           };
         }
 
@@ -39,72 +39,80 @@ namespace GildedRose.Console.RosaDourada
         {
             for (var i = 0; i < Itens.Count; i++)
             {
-                if (Itens[i].Nome != "Queijo Brie Envelhecido" && Itens[i].Nome != "Passes para os bastidores do show TAFKAL80ETC ")
+                if (Itens[i] is ItemDegradavel)
                 {
-                    if (Itens[i].Qualidade > 0)
-                    {
-                        if (Itens[i].Nome != "Sulfuras, Mão de Ragnaros")
-                        {
-                            Itens[i].Qualidade = Itens[i].Qualidade - 1;
-                        }
-                    }
+                    Itens[i].AtualizarPrazo();
+
                 }
                 else
                 {
-                    if (Itens[i].Qualidade < 50)
+                    if (Itens[i].GetItem().Nome != "Queijo Brie Envelhecido" && Itens[i].GetItem().Nome != "Passes para os bastidores do show TAFKAL80ETC ")
                     {
-                        Itens[i].Qualidade = Itens[i].Qualidade + 1;
-
-                        if (Itens[i].Nome == "Passes para os bastidores do show TAFKAL80ETC ")
+                        if (Itens[i].GetItem().Qualidade > 0)
                         {
-                            if (Itens[i].PrazoDeVenda < 11)
+                            if (Itens[i].GetItem().Nome != "Sulfuras, Mão de Ragnaros")
                             {
-                                if (Itens[i].Qualidade < 50)
-                                {
-                                    Itens[i].Qualidade = Itens[i].Qualidade + 1;
-                                }
+                                Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - 1;
                             }
-
-                            if (Itens[i].PrazoDeVenda < 6)
-                            {
-                                if (Itens[i].Qualidade < 50)
-                                {
-                                    Itens[i].Qualidade = Itens[i].Qualidade + 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (Itens[i].Nome != "Sulfuras, Mão de Ragnaros")
-                {
-                    Itens[i].PrazoDeVenda = Itens[i].PrazoDeVenda - 1;
-                }
-
-                if (Itens[i].PrazoDeVenda < 0)
-                {
-                    if (Itens[i].Nome != "Queijo Brie Envelhecido")
-                    {
-                        if (Itens[i].Nome != "Passes para os bastidores do show TAFKAL80ETC ")
-                        {
-                            if (Itens[i].Qualidade > 0)
-                            {
-                                if (Itens[i].Nome != "Sulfuras, Mão de Ragnaros")
-                                {
-                                    Itens[i].Qualidade = Itens[i].Qualidade - 1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Itens[i].Qualidade = Itens[i].Qualidade - Itens[i].Qualidade;
                         }
                     }
                     else
                     {
-                        if (Itens[i].Qualidade < 50)
+                        if (Itens[i].GetItem().Qualidade < 50)
                         {
-                            Itens[i].Qualidade = Itens[i].Qualidade + 1;
+                            Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
+
+                            if (Itens[i].GetItem().Nome == "Passes para os bastidores do show TAFKAL80ETC ")
+                            {
+                                if (Itens[i].GetItem().PrazoDeVenda < 11)
+                                {
+                                    if (Itens[i].GetItem().Qualidade < 50)
+                                    {
+                                        Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
+                                    }
+                                }
+
+                                if (Itens[i].GetItem().PrazoDeVenda < 6)
+                                {
+                                    if (Itens[i].GetItem().Qualidade < 50)
+                                    {
+                                        Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (Itens[i].GetItem().Nome != "Sulfuras, Mão de Ragnaros")
+                    {
+                        Itens[i].GetItem().PrazoDeVenda = Itens[i].GetItem().PrazoDeVenda - 1;
+                    }
+
+                    if (Itens[i].GetItem().PrazoDeVenda < 0)
+                    {
+                        if (Itens[i].GetItem().Nome != "Queijo Brie Envelhecido")
+                        {
+                            if (Itens[i].GetItem().Nome != "Passes para os bastidores do show TAFKAL80ETC ")
+                            {
+                                if (Itens[i].GetItem().Qualidade > 0)
+                                {
+                                    if (Itens[i].GetItem().Nome != "Sulfuras, Mão de Ragnaros")
+                                    {
+                                        Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - 1;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - Itens[i].GetItem().Qualidade;
+                            }
+                        }
+                        else
+                        {
+                            if (Itens[i].GetItem().Qualidade < 50)
+                            {
+                                Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
+                            }
                         }
                     }
                 }

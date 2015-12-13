@@ -25,14 +25,14 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(2);
 
-            var sulfurarAntes = estoque.Itens.First(x => x.Nome == "Sulfuras, Mão de Ragnaros");
+            var sulfurarAntes = estoque.Itens.First(x =>x.GetItem().Nome == "Sulfuras, Mão de Ragnaros");
 
             estoque.AtualizarQualidade();
 
-            var sulfurarDepois = estoque.Itens.First(x => x.Nome == "Sulfuras, Mão de Ragnaros");
+            var sulfurarDepois = estoque.Itens.First(x =>x.GetItem().Nome == "Sulfuras, Mão de Ragnaros");
 
-            Assert.Equal(sulfurarDepois.Qualidade, sulfurarAntes.Qualidade);
-            Assert.Equal(sulfurarDepois.Qualidade, 80);
+            Assert.Equal(sulfurarDepois.GetItem().Qualidade, sulfurarAntes.GetItem().Qualidade);
+            Assert.Equal(sulfurarDepois.GetItem().Qualidade, 80);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(16);
 
-            Assert.True(estoque.Itens.SkipWhile(x => x.Nome == "Sulfuras, Mão de Ragnaros").All(x => x.Qualidade <= 50 || x.Qualidade >= 0));
+            Assert.True(estoque.Itens.SkipWhile(x =>x.GetItem().Nome == "Sulfuras, Mão de Ragnaros").All(x =>x.GetItem().Qualidade <= 50 ||x.GetItem().Qualidade >= 0));
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(9);
 
-            Assert.True(estoque.Itens.All(x => x.Qualidade >= 0));
+            Assert.True(estoque.Itens.All(x =>x.GetItem().Qualidade >= 0));
         }
 
         [Fact]
@@ -56,9 +56,9 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(11);
 
-            var item = estoque.Itens.First(x => x.Nome == "+5 Vestimenta da Destreza");
+            var item = estoque.Itens.First(x =>x.GetItem().Nome == "+5 Vestimenta da Destreza");
 
-            Assert.Equal(8, item.Qualidade);
+            Assert.Equal(8, item.GetItem().Qualidade);
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(3);
 
-            Assert.True(estoque.Itens.Any(x => x.Nome == "Queijo Brie Envelhecido" && x.Qualidade == 4));
+            Assert.True(estoque.Itens.Any(x =>x.GetItem().Nome == "Queijo Brie Envelhecido" &&x.GetItem().Qualidade == 4));
         }
 
         [Fact]
@@ -74,9 +74,9 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(5);
 
-            var item = estoque.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+            var item = estoque.Itens.First(x =>x.GetItem().Nome == "Passes para os bastidores do show TAFKAL80ETC ");
 
-            Assert.Equal(25, item.Qualidade);
+            Assert.Equal(25, item.GetItem().Qualidade);
         }
 
         [Fact]
@@ -84,9 +84,9 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(6);
 
-            var item = estoque.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+            var item = estoque.Itens.First(x =>x.GetItem().Nome == "Passes para os bastidores do show TAFKAL80ETC ");
 
-            Assert.Equal(27, item.Qualidade);
+            Assert.Equal(27, item.GetItem().Qualidade);
         }
 
 
@@ -95,9 +95,9 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(12);
 
-            var item = estoque.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+            var item = estoque.Itens.First(x =>x.GetItem().Nome == "Passes para os bastidores do show TAFKAL80ETC ");
 
-            Assert.Equal(41, item.Qualidade);
+            Assert.Equal(41, item.GetItem().Qualidade);
         }
 
         [Fact]
@@ -105,9 +105,9 @@ namespace RosaDourada.Testes
         {
             var estoque = ExecutarDiasDeVenda(16);
 
-            var item = estoque.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+            var item = estoque.Itens.First(x =>x.GetItem().Nome == "Passes para os bastidores do show TAFKAL80ETC ");
 
-            Assert.Equal(0, item.Qualidade);
+            Assert.Equal(0, item.GetItem().Qualidade);
         }
     }
 }

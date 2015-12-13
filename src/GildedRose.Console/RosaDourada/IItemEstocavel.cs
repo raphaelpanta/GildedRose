@@ -12,4 +12,23 @@ namespace GildedRose.Console.RosaDourada
 
         Item GetItem();
     }
+
+    public class DummyItemEstocavel : IItemEstocavel
+    {
+        private Item Item;
+
+        public DummyItemEstocavel(Item item)
+        {
+            Item = item;
+        }
+
+        public void AtualizarPrazo()
+        {
+        }
+
+        public Item GetItem()
+        {
+            return Item;
+        }
+    }
 }
