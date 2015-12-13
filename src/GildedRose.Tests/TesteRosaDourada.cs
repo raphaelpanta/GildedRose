@@ -32,6 +32,21 @@ namespace RosaDourada.Testes
         }
 
         [Fact]
+        public void ItensDevemTerEntreZeroECinquentaDeQualidadeExcetoRagnaros()
+        {
+             Programa.Main(new[] { "" });
+
+            var app = Programa.App;
+
+            for(var i = 1; i< 15; i++)
+            {
+                app.AtualizarQualidade();
+            }
+
+            Assert.True(app.Itens.SkipWhile(x => x.Nome == "Sulfuras, Mão de Ragnaros").All(x => x.Qualidade <= 50 || x.Qualidade >= 0));
+        }
+
+        [Fact]
         public void NenhumItemPodeTemQualidadeAbaixoDeZero()
         {
             Programa.Main(new[] { "" });
@@ -85,5 +100,6 @@ namespace RosaDourada.Testes
 
             Assert.True(app.Itens.Any(x => x.Nome == "Queijo Brie Envelhecido" && x.Qualidade == 4));
         }
+
     }
 }
