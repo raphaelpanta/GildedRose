@@ -6,20 +6,25 @@ namespace RosaDourada.Testes
 {
     public class TesteRosaDourada
     {
-        [Fact]
-        public void TestarAVeracidade()
+        private Programa ExecutarDiasDeVenda(int dias)
         {
-            Assert.True(true);
+            Programa.Main(new[] { "" });
+
+            var app = Programa.App;
+            int diasPassados = dias - 1;
+
+            for (int i = 0; i < diasPassados; i++)
+            {
+                app.AtualizarQualidade();
+            }
+
+            return app;
         }
 
         [Fact]
         public void SulfurasNuncaDecrementaEmQualidade()
         {
-            Programa.Main(new[] { "" });
-
-            var app = Programa.App;
-
-            app.AtualizarQualidade();
+            var app = ExecutarDiasDeVenda(2);
 
             var sulfurarAntes = app.Itens.First(x => x.Nome == "Sulfuras, Mão de Ragnaros");
 
@@ -34,14 +39,7 @@ namespace RosaDourada.Testes
         [Fact]
         public void ItensDevemTerEntreZeroECinquentaDeQualidadeExcetoRagnaros()
         {
-             Programa.Main(new[] { "" });
-
-            var app = Programa.App;
-
-            for(var i = 1; i< 15; i++)
-            {
-                app.AtualizarQualidade();
-            }
+            var app = ExecutarDiasDeVenda(16);
 
             Assert.True(app.Itens.SkipWhile(x => x.Nome == "Sulfuras, Mão de Ragnaros").All(x => x.Qualidade <= 50 || x.Qualidade >= 0));
         }
@@ -49,18 +47,7 @@ namespace RosaDourada.Testes
         [Fact]
         public void NenhumItemPodeTemQualidadeAbaixoDeZero()
         {
-            Programa.Main(new[] { "" });
-
-            var app = Programa.App;
-
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
+            var app = ExecutarDiasDeVenda(9);
 
             Assert.True(app.Itens.All(x => x.Qualidade >= 0));
         }
@@ -68,20 +55,7 @@ namespace RosaDourada.Testes
         [Fact]
         public void AposOPrazoDeVendaAQualidadeDeveDegradarDuasVezes()
         {
-            Programa.Main(new[] { "" });
-
-            var app = Programa.App;
-
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
+            var app = ExecutarDiasDeVenda(11);
 
             var item = app.Itens.First(x => x.Nome == "+5 Vestimenta da Destreza");
 
@@ -91,15 +65,50 @@ namespace RosaDourada.Testes
         [Fact]
         public void QueijoBrieEnvelhecidoDeveAumentarAQualidadeAposPrazoDeVenda()
         {
-            Programa.Main(new[] { "" });
-
-            var app = Programa.App;
-
-            app.AtualizarQualidade();
-            app.AtualizarQualidade();
+            var app = ExecutarDiasDeVenda(3);
 
             Assert.True(app.Itens.Any(x => x.Nome == "Queijo Brie Envelhecido" && x.Qualidade == 4));
         }
 
+        [Fact]
+        public void QualidadeDoPasseParaBastidoresAumentaAoFicaMaisPróximoDoDiaDePrazo()
+        {
+            var app = ExecutarDiasDeVenda(5);
+
+            var item = app.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+
+            Assert.Equal(25, item.Qualidade);
+        }
+
+        [Fact]
+        public void QualidadeDoPasseParaBastidoresAumentaEm2AoFicaA10DiasDoDiaDePrazo()
+        {
+            var app = ExecutarDiasDeVenda(6);
+
+            var item = app.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+
+            Assert.Equal(27, item.Qualidade);
+        }
+
+
+        [Fact]
+        public void QualidadeDoPasseParaBastidoresAumentaEm3AoFicaA5DiasDoDiaDePrazo()
+        {
+            var app = ExecutarDiasDeVenda(12);
+
+            var item = app.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+
+            Assert.Equal(41, item.Qualidade);
+        }
+
+        [Fact]
+        public void AoPassarDoPrazoDeVendaOPasseTemQualidadeZero()
+        {
+            var app = ExecutarDiasDeVenda(16);
+
+            var item = app.Itens.First(x => x.Nome == "Passes para os bastidores do show TAFKAL80ETC ");
+
+            Assert.Equal(0, item.Qualidade);
+        }
     }
 }
