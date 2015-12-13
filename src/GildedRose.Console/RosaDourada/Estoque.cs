@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GildedRose.Console.RosaDourada
 {
+
     public class Estoque
     {
         public IList<Item> Itens { get; private set; }

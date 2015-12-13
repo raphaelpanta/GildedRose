@@ -44,7 +44,9 @@
     <Compile Include="Programa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RosaDourada\Estoque.cs" />
+    <Compile Include="RosaDourada\IItemEstocavel.cs" />
     <Compile Include="RosaDourada\Item.cs" />
+    <Compile Include="RosaDourada\ItemDegradavel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

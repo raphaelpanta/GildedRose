@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TesteRosaDourada.cs" />
+    <Compile Include="TesteItemDegradavel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
