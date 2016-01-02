@@ -24,7 +24,7 @@ namespace GildedRose.Console.RosaDourada
                                           new ItemDegradavel (new Item {Nome = "+5 Vestimenta da Destreza", PrazoDeVenda = 10, Qualidade = 20}),
                                            new DummyItemEstocavel (new Item {Nome = "Queijo Brie Envelhecido", PrazoDeVenda = 2, Qualidade = 0}),
                                            new ItemDegradavel (new Item {Nome = "Elixir do Mangusto", PrazoDeVenda = 5, Qualidade = 7}),
-                                           new DummyItemEstocavel (  new Item {Nome = "Sulfuras, Mão de Ragnaros", PrazoDeVenda = 0, Qualidade = 80}),
+                                           new ItemLegendario (  new Item {Nome = "Sulfuras, Mão de Ragnaros", PrazoDeVenda = 0, Qualidade = 80}),
                                             new DummyItemEstocavel  (new Item
                                                   {
                                                       Nome = "Passes para os bastidores do show TAFKAL80ETC ",
@@ -39,7 +39,7 @@ namespace GildedRose.Console.RosaDourada
         {
             for (var i = 0; i < Itens.Count; i++)
             {
-                if (Itens[i] is ItemDegradavel)
+                if (Itens[i] is ItemDegradavel || Itens[i] is ItemLegendario)
                 {
                     Itens[i].AtualizarPrazo();
 
@@ -50,10 +50,7 @@ namespace GildedRose.Console.RosaDourada
                     {
                         if (Itens[i].GetItem().Qualidade > 0)
                         {
-                            if (Itens[i].GetItem().Nome != "Sulfuras, Mão de Ragnaros")
-                            {
-                                Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - 1;
-                            }
+                            Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - 1;
                         }
                     }
                     else
@@ -83,10 +80,7 @@ namespace GildedRose.Console.RosaDourada
                         }
                     }
 
-                    if (Itens[i].GetItem().Nome != "Sulfuras, Mão de Ragnaros")
-                    {
-                        Itens[i].GetItem().PrazoDeVenda = Itens[i].GetItem().PrazoDeVenda - 1;
-                    }
+                    Itens[i].GetItem().PrazoDeVenda = Itens[i].GetItem().PrazoDeVenda - 1;
 
                     if (Itens[i].GetItem().PrazoDeVenda < 0)
                     {
@@ -96,10 +90,7 @@ namespace GildedRose.Console.RosaDourada
                             {
                                 if (Itens[i].GetItem().Qualidade > 0)
                                 {
-                                    if (Itens[i].GetItem().Nome != "Sulfuras, Mão de Ragnaros")
-                                    {
-                                        Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - 1;
-                                    }
+                                    Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade - 1;
                                 }
                             }
                             else

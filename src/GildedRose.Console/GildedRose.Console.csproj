@@ -47,6 +47,7 @@
     <Compile Include="RosaDourada\IItemEstocavel.cs" />
     <Compile Include="RosaDourada\Item.cs" />
     <Compile Include="RosaDourada\ItemDegradavel.cs" />
+    <Compile Include="RosaDourada\ItemLegendario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
