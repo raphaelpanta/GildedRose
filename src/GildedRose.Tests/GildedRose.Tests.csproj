@@ -75,6 +75,7 @@
     <Compile Include="TesteItemNaoDegradavel.cs" />
     <Compile Include="TesteRosaDourada.cs" />
     <Compile Include="TesteItemDegradavel.cs" />
+    <Compile Include="TesteTiquete.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

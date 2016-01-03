@@ -25,7 +25,7 @@ namespace GildedRose.Console.RosaDourada
                                            new ItemNaoDegradavel (new Item {Nome = "Queijo Brie Envelhecido", PrazoDeVenda = 2, Qualidade = 0}),
                                            new ItemDegradavel (new Item {Nome = "Elixir do Mangusto", PrazoDeVenda = 5, Qualidade = 7}),
                                            new ItemLegendario (  new Item {Nome = "Sulfuras, Mão de Ragnaros", PrazoDeVenda = 0, Qualidade = 80}),
-                                            new DummyItemEstocavel  (new Item
+                                           new Tiquete  (new Item
                                                   {
                                                       Nome = "Passes para os bastidores do show TAFKAL80ETC ",
                                                       PrazoDeVenda = 15,
@@ -39,38 +39,8 @@ namespace GildedRose.Console.RosaDourada
         {
             for (var i = 0; i < Itens.Count; i++)
             {
-                if (Itens[i] is ItemDegradavel || Itens[i] is ItemLegendario || Itens[i] is ItemNaoDegradavel)
-                {
-                    Itens[i].AtualizarPrazo();
+                Itens[i].AtualizarPrazo();
 
-                }
-                else
-                {
-                    if (Itens[i].GetItem().Qualidade < 50)
-                    {
-                        Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
-
-                        if (Itens[i].GetItem().Qualidade < 50)
-                        {
-                            if (Itens[i].GetItem().PrazoDeVenda < 11)
-                            {
-                                Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
-                            }
-
-                            if (Itens[i].GetItem().PrazoDeVenda < 6)
-                            {
-                                Itens[i].GetItem().Qualidade = Itens[i].GetItem().Qualidade + 1;
-                            }
-                        }
-                    }
-
-                    Itens[i].GetItem().PrazoDeVenda = Itens[i].GetItem().PrazoDeVenda - 1;
-
-                    if (Itens[i].GetItem().PrazoDeVenda < 0)
-                    {
-                        Itens[i].GetItem().Qualidade = 0;
-                    }
-                }
             }
         }
     }
