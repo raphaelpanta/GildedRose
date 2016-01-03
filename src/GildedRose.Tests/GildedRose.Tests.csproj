@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TesteItemLegendario.cs" />
+    <Compile Include="TesteItemNaoDegradavel.cs" />
     <Compile Include="TesteRosaDourada.cs" />
     <Compile Include="TesteItemDegradavel.cs" />
   </ItemGroup>
